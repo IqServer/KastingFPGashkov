@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace Models
 {   
     public class Firm
     {
-        public int Id {get;set;}
+        [JsonIgnore]
+        public int Id {get;init;}
         public string Number {get;set;}
         public Season Season {get;set;}
         public string Amount {get;set;}

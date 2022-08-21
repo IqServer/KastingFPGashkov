@@ -1,9 +1,12 @@
+using System.Text.Json.Serialization;
+
 namespace Models
 
 {   
     public class Member
     {
-        public int Id {get;set;}
+        [JsonIgnore]
+        public int Id {get;init;}
         public int UserId {get;set;}
         public User? User {get;set;}
         public string City {get;set;}

@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace Models
 {   
     public class Season
     {
-        public int Id {get;set;}
+        [JsonIgnore]
+        public int Id {get;init;}
         public string Title {get;set;}
         public string Start {get;set;}
         public string End {get;set;}   
