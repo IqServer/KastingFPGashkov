@@ -30,4 +30,13 @@ public class UserController : ControllerBase
     {
         return _userService.GetUserById(id);
     }
+
+    [HttpPost("AddUser")]
+        public void AddUser(User newUser)
+    {
+        //проверки
+        _userService.Add(newUser);
+    
+        
+    }
 }
