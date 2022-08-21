@@ -11,9 +11,8 @@ public class UserService{
     }
 
     public List<User> GetUsers(){    
-        var user = _context.Users.ToList();
-
-            return user;
+        List<User> user = _context.Users.ToList();
+        return user;
     }
      public void GenerateUser(){
           User Test = new User();
@@ -38,5 +37,16 @@ public class UserService{
         Test3.Firm = 2;
         _context.Users.Add(Test3);
         _context.SaveChanges();
+    }
+    public User GetUserById(int id)
+    {
+        return _context.Users.Where(x => x.Id == id ).FirstOrDefault();
+    }
+    public void Add(User newUser)
+    {
+        //проверки
+        _context.Add(newUser);
+        _context.SaveChanges();
+        
     }
 }
