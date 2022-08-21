@@ -33,5 +33,5 @@ class TestController : ControllerBase
         _memberService.GenerateMember();
     
     }
-
+    
 }
