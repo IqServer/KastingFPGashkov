@@ -5,7 +5,6 @@ namespace Models
 {   
     public class Member
     {
-        [JsonIgnore]
         public int Id {get;init;}
         public int UserId {get;set;}
         public User? User {get;set;}

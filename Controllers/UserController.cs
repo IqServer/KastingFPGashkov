@@ -45,4 +45,13 @@ public class UserController : ControllerBase
     {   
         _userService.Delete(id);
     }
+
+    [HttpPost("UpdateUser")]
+    public void UpdateUser(User user)
+    {
+
+        _userService.Update(user);
+    
+        
+    }
 }
