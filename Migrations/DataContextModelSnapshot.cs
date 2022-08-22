@@ -50,26 +50,23 @@ namespace Zachem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Amount")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("AverAge")
+                    b.Property<int>("Amount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("AveragePoints")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<double>("AverAge")
+                        .HasColumnType("double precision");
 
-                    b.Property<int>("GenderRatio")
+                    b.Property<double>("AveragePoints")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("GenderRatio")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("Number")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("PercentNew")
-                        .HasColumnType("integer");
+                    b.Property<double>("PercentNew")
+                        .HasColumnType("double precision");
 
                     b.Property<int>("SeasonId")
                         .HasColumnType("integer");

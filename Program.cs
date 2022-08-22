@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<MemberService>();
+builder.Services.AddScoped<SeasonService>();
+builder.Services.AddScoped<FirmService>();
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext<DataContext>(opt =>
