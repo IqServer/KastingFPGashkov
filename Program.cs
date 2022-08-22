@@ -23,6 +23,8 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<MemberService>();
 builder.Services.AddScoped<SeasonService>();
 builder.Services.AddScoped<FirmService>();
+builder.Services.AddScoped<JobService>();
+builder.Services.AddScoped<KuratorService>();
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext<DataContext>(opt =>
