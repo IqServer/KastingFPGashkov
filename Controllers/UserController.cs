@@ -32,11 +32,17 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("AddUser")]
-        public void AddUser(User newUser)
+    public void AddUser(User newUser)
     {
-        //проверки
+
         _userService.Add(newUser);
     
         
+    }
+    
+    [HttpDelete("DeleteUser")]
+    public void DeleteUser(int id)
+    {   
+        _userService.Delete(id);
     }
 }

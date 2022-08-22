@@ -49,9 +49,15 @@ public class UserService{
     }
     public void Add(User newUser)
     {
-        //проверки
+        
         _context.Add(newUser);
         _context.SaveChanges();
         
+    }
+    public void Delete(int id)
+    {   
+        User? user = _context.Users.FirstOrDefault(x => x.Id == id);
+        _context.Users.Remove(user);
+        _context.SaveChanges();
     }
 }
