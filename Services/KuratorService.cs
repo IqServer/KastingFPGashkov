@@ -36,4 +36,30 @@ public class KuratorService{
         _context.Kurators.Add(Test);
         _context.SaveChanges();
     }
+    public Kurator GetKuratorById(int id)
+    {
+
+       var kurator =  _context.Kurators.Where(x => x.Id == id ).FirstOrDefault();
+       return kurator;
+    }
+    public void Add(Kurator newKurator)
+    {
+        
+        _context.Add(newKurator);
+        _context.SaveChanges();
+        
+    }
+    public void Delete(int id)
+    {   
+        Kurator? kurator = _context.Kurators.FirstOrDefault(x => x.Id == id);
+        _context.Kurators.Remove(kurator);
+        _context.SaveChanges();
+    }
+    public void Update(Kurator kurator)
+    {
+        
+        _context.Update(kurator);
+        _context.SaveChanges();
+        
+    }
 }
