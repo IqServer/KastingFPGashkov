@@ -20,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<MemberService>();
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext<DataContext>(opt =>

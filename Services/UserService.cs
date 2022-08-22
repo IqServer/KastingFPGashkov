@@ -60,4 +60,11 @@ public class UserService{
         _context.Users.Remove(user);
         _context.SaveChanges();
     }
+    public void Update(User user)
+    {
+        
+        _context.Update(user);
+        _context.SaveChanges();
+        
+    }
 }

@@ -4,7 +4,6 @@ namespace Models
 {   
     public class Kurator
     {
-        [JsonIgnore]
         public int Id {get;init;}
         public int UserId {get;set;}
         public User? User {get;set;}

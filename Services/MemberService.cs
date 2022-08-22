@@ -11,9 +11,8 @@ public class MemberService{
     }
 
     public List<Member> GetMembers(){    
-        var Member = _context.Members.ToList();
-
-            return Member;
+        List<Member> member = _context.Members.ToList();
+        return member;
     }
      public void GenerateMember(){
             Member Test = new Member();
@@ -38,5 +37,31 @@ public class MemberService{
         Test3.ProffessionId = 6;
         _context.Members.Add(Test3);
         _context.SaveChanges();
+    }
+    public Member GetMemberById(int id)
+    {
+
+       var member =  _context.Members.Where(x => x.Id == id ).FirstOrDefault();
+       return member;
+    }
+    public void Add(Member newMember)
+    {
+        
+        _context.Add(newMember);
+        _context.SaveChanges();
+        
+    }
+    public void Delete(int id)
+    {   
+        Member? member = _context.Members.FirstOrDefault(x => x.Id == id);
+        _context.Members.Remove(member);
+        _context.SaveChanges();
+    }
+    public void Update(Member member)
+    {
+        
+        _context.Update(member);
+        _context.SaveChanges();
+        
     }
 }

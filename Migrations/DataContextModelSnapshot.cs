@@ -199,6 +199,9 @@ namespace Zachem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("Age")
                         .HasColumnType("integer");
 

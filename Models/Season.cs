@@ -4,7 +4,6 @@ namespace Models
 {   
     public class Season
     {
-        [JsonIgnore]
         public int Id {get;init;}
         public string Title {get;set;}
         public string Start {get;set;}

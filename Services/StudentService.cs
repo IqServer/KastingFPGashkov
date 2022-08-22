@@ -11,9 +11,8 @@ public class StudentService{
     }
 
     public List<Member> GetStudents(){    
-        var Member = _context.Members.ToList();
-
-            return Member;
+        List<Member> Member = _context.Members.ToList();
+        return Member;
     }
      public void GenerateStudent(){
           Member student = new Member();
