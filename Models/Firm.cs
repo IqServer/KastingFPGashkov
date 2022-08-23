@@ -12,7 +12,7 @@ namespace Models
         public double AveragePoints {get;set;}
         public double GenderRatio {get;set;}
         public double PercentNew{get;set;}
-
+        public List<Member> Members {get;set;}
 
     }
 }

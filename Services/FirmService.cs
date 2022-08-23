@@ -70,4 +70,36 @@ public class FirmService{
         _context.SaveChanges();
         
     }
+    public void RandomFirmGenerate(int countFirm)
+    {   
+        List<Member> members = _context.Members.ToList();
+        List<Firm> firms = new List<Firm>();
+
+        for (int i = 0; i < countFirm; i++)
+        {
+            Firm test = new Firm();
+
+            test.Number = 1;
+
+            firms.Add(test);
+        }
+
+        int k = 0;
+        foreach (var item in members)
+        {
+            if(k >= countFirm)
+             k = 0;
+
+            firms[k].Members.Add(item);
+
+            k++;
+        }
+//вычислить значения в каждой фирме
+        foreach (var item in firms)
+        {
+            _context.Firms.Add(item);
+        }
+        _context.SaveChanges();
+        
+    }
 }

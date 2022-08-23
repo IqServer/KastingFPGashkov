@@ -5,7 +5,7 @@ using Services;
 
 [ApiController]
 [Route("/api/[controller]/[action]")]
-class TestController : ControllerBase
+public class TestController : ControllerBase
 {
     
     UserService _userService;
