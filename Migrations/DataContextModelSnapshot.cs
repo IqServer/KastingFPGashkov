@@ -31,11 +31,9 @@ namespace Zachem.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Proffession")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("QuestionsList")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -51,25 +49,28 @@ namespace Zachem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
+                    b.Property<int?>("Amount")
                         .HasColumnType("integer");
 
-                    b.Property<double>("AverAge")
+                    b.Property<double?>("AverAge")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("AveragePoints")
+                    b.Property<double?>("AveragePoints")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("GenderRatio")
-                        .HasColumnType("double precision");
-
-                    b.Property<int>("Number")
+                    b.Property<int?>("GenderMan")
                         .HasColumnType("integer");
 
-                    b.Property<double>("PercentNew")
+                    b.Property<int?>("GenderWoman")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("Number")
+                        .HasColumnType("integer");
+
+                    b.Property<double?>("PercentNew")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("SeasonId")
+                    b.Property<int?>("SeasonId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -88,7 +89,6 @@ namespace Zachem.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Proffession")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -104,14 +104,13 @@ namespace Zachem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ProffessionId")
+                    b.Property<int?>("ProffessionId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Project")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -132,19 +131,18 @@ namespace Zachem.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("FirmId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ProffessionId")
+                    b.Property<int?>("ProffessionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Result")
+                    b.Property<int?>("ResultId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -153,9 +151,36 @@ namespace Zachem.Migrations
 
                     b.HasIndex("ProffessionId");
 
+                    b.HasIndex("ResultId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("Models.Result", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<double?>("Designer")
+                        .HasColumnType("double precision");
+
+                    b.Property<double?>("Manager")
+                        .HasColumnType("double precision");
+
+                    b.Property<double?>("Programmer")
+                        .HasColumnType("double precision");
+
+                    b.Property<double?>("Reklamist")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("Models.Season", b =>
@@ -166,27 +191,22 @@ namespace Zachem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
+                    b.Property<int?>("Amount")
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("End")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("KuratorList")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Start")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -202,32 +222,28 @@ namespace Zachem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("boolean");
+                    b.Property<double?>("Age")
+                        .HasColumnType("double precision");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Firm")
+                    b.Property<int?>("Firm")
                         .HasColumnType("integer");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("IsOld")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Login")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -239,9 +255,7 @@ namespace Zachem.Migrations
                 {
                     b.HasOne("Models.Season", "Season")
                         .WithMany()
-                        .HasForeignKey("SeasonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SeasonId");
 
                     b.Navigation("Season");
                 });
@@ -250,15 +264,11 @@ namespace Zachem.Migrations
                 {
                     b.HasOne("Models.Job", "Proffession")
                         .WithMany()
-                        .HasForeignKey("ProffessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProffessionId");
 
                     b.HasOne("Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Proffession");
 
@@ -273,17 +283,19 @@ namespace Zachem.Migrations
 
                     b.HasOne("Models.Job", "Proffession")
                         .WithMany()
-                        .HasForeignKey("ProffessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProffessionId");
+
+                    b.HasOne("Models.Result", "Result")
+                        .WithMany()
+                        .HasForeignKey("ResultId");
 
                     b.HasOne("Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Proffession");
+
+                    b.Navigation("Result");
 
                     b.Navigation("User");
                 });

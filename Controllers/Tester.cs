@@ -1,7 +1,7 @@
 namespace controllers;
 using Microsoft.AspNetCore.Mvc;
 using Services;
-
+using testnet;
 
 [ApiController]
 [Route("/api/[controller]/[action]")]
@@ -12,6 +12,7 @@ public class TestController : ControllerBase
     StudentService _studentService;
     KuratorService _kuratorService;
     MemberService _memberService;
+    DataContext _context;
     public TestController(UserService userService, StudentService studentService, KuratorService kuratorService, MemberService memberService)
     {
         _userService = userService;
@@ -33,5 +34,8 @@ public class TestController : ControllerBase
         _memberService.GenerateMember();
     
     }
-    
+    [HttpGet]
+        public void CreateDB(){
+         _context.CreateBDNew();
+        }
 }

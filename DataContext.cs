@@ -17,6 +17,7 @@ namespace testnet
         public DbSet<Kurator> Kurators {get; set;}
         public DbSet<Anketa> Anketas {get; set;}
         public DbSet<Job> Jobs {get; set;}
+        public DbSet<Result> Results {get; set;}
        
         public void  CreateBDNew()
         {
