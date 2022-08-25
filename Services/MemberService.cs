@@ -15,26 +15,31 @@ public class MemberService{
         return member;
     }
      public void GenerateMember(){
+
+
+
+
+        
             Member Test = new Member();
 
         Test.UserId = 1;
         Test.City = "тяжелый проект";
-        Test.Result.Reklamist = 35;
+        Test.ResultId = 2;
         Test.ProffessionId = 2;
         _context.Members.Add(Test);
             Member Test2 = new Member();
 
         Test2.UserId = 2;
         Test2.City = "Устал делать проект";
-        Test2.Result.Manager = 29;
+        Test2.ResultId = 1;
         Test2.ProffessionId = 1;
         _context.Members.Add(Test2);
             Member Test3 = new Member();
 
         Test3.UserId = 3;
         Test3.City = "Плохойпарень";
-        Test3.Result.Designer = 45;
-        Test3.ProffessionId = 6;
+        Test3.ResultId = 3;
+        Test3.ProffessionId = 3;
         _context.Members.Add(Test3);
         _context.SaveChanges();
     }
