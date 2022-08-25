@@ -13,12 +13,6 @@ public class JobController : ControllerBase
     {
         _jobService = jobService;
     }
-    [HttpGet]
-    public void GenerateJob()
-    {
-        
-        _jobService.GenerateJob();
-    }
     [HttpGet("GetAllJobs")]
     public List<Models.Job> GetAllJobs()
     {
