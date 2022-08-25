@@ -1,5 +1,6 @@
 namespace controllers;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using Services;
 using testnet;
 
@@ -29,7 +30,6 @@ public class TestController : ControllerBase
       
         _userService.GenerateUser();
 
-        _studentService.GenerateStudent();
       
         _kuratorService.GenerateKurator();
 
@@ -39,5 +39,8 @@ public class TestController : ControllerBase
     [HttpGet]
         public void CreateDB(){
          _context.CreateBDNew();
-        }
+
+         Job Proffesion = new Job();
+         _context.Jobs.Add(Proffesion);
+      }
 }
