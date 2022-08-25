@@ -198,14 +198,14 @@ public class FirmService
         List<Member> membersNewOriginal = members.Where(x => x.User.IsOld == false).ToList();
 
         int countNew = membersNewOriginal.Count;
-        while (membersOldOriginal.Count > 0)
+        while (membersNewOriginal.Count > 0)
         {
-            var membersOld = membersOldOriginal
+            var membersNew = membersNewOriginal
                         .OrderBy(x => x.User.Age)
                         .OrderBy(x => x.Result.Programmer).ToList();
 
             int countIteration = 0;
-            foreach (var item in membersOld)
+            foreach (var item in membersNew)
             {
                 if (k >= countFirm)
                 {
@@ -218,16 +218,16 @@ public class FirmService
                 }
                 item.ProffessionId = 1;
                 firms[k].Members.Add(item);
-                membersOldOriginal.Remove(item);
+                membersNewOriginal.Remove(item);
                 k++;
             }
 
-            membersOld = membersOldOriginal
+            membersNew = membersNewOriginal
                         .OrderBy(x => x.User.Age)
                         .OrderBy(x => x.Result.Designer).ToList();
 
             countIteration = 0;
-            foreach (var item in membersOld)
+            foreach (var item in membersNew)
             {
                 if (k >= countFirm)
                 {
@@ -240,16 +240,16 @@ public class FirmService
                 }
                 item.ProffessionId = 2;
                 firms[k].Members.Add(item);
-                membersOldOriginal.Remove(item);
+                membersNewOriginal.Remove(item);
                 k++;
             }
 
-            membersOld = membersOldOriginal
+            membersNew = membersNewOriginal
                         .OrderBy(x => x.User.Age)
                         .OrderBy(x => x.Result.Reklamist).ToList();
 
             countIteration = 0;
-            foreach (var item in membersOld)
+            foreach (var item in membersNew)
             {
                 if (k >= countFirm)
                 {
@@ -262,7 +262,7 @@ public class FirmService
                 }
                 item.ProffessionId = 3;
                 firms[k].Members.Add(item);
-                membersOldOriginal.Remove(item);
+                membersNewOriginal.Remove(item);
                 k++;
             }
         }
@@ -288,7 +288,7 @@ public class FirmService
             int woman = firm.Members.Where(x => x.User.Gender == "д").ToList().Count;
             int man = firm.Members.Where(x => x.User.Gender == "м").ToList().Count; 
             int old = firm.Members.Where(x => x.User.IsOld == true).ToList().Count; 
-            int newbie = firm.Members.Where(x => x.User.IsOld == false).ToList().Count;
+            double newbie = firm.Members.Where(x => x.User.IsOld == false).ToList().Count;
             // мужского и женского пола человек отдельно
             
             firm.AverAge = ageSum / firm.Members.Count;
@@ -296,7 +296,8 @@ public class FirmService
             firm.Amount = firm.Members.Count;
             firm.GenderMan = man;
             firm.GenderWoman = woman;
-            firm.PercentNew = newbie / firm.Members.Count;
+            double AllMembers = firm.Members.Count;
+            firm.PercentNew = newbie / AllMembers * 100;
         }
         _context.Firms.AddRange(firms);
         _context.SaveChanges();

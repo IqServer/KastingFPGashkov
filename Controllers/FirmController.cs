@@ -59,4 +59,9 @@ public class FirmController : ControllerBase
         _firmService.RandomFirmGenerate(countFirm);
     }
 
+    [HttpPost("FirmListGenerate")]
+    public void FirmListGenerate(int countFirm)
+    {   
+        _firmService.FirmListGenerate(countFirm);
+    }
 }
