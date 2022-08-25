@@ -13,12 +13,14 @@ public class TestController : ControllerBase
     KuratorService _kuratorService;
     MemberService _memberService;
     DataContext _context;
-    public TestController(UserService userService, StudentService studentService, KuratorService kuratorService, MemberService memberService)
+    public TestController(UserService userService,     DataContext context,
+    StudentService studentService, KuratorService kuratorService, MemberService memberService)
     {
         _userService = userService;
         _studentService = studentService;
         _kuratorService = kuratorService;
         _memberService = memberService;
+        _context = context;
     }
 
     [HttpGet]
