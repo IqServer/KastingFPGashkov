@@ -21,7 +21,7 @@ public class JobService{
         _context.Jobs.Add(Test);
             Job Test2 = new Job();
 
-        Test2.Proffession = "2д дизайнер";
+        Test2.Proffession = "Дизайнер";
         _context.Jobs.Add(Test2);
             Job Test3 = new Job();
 
